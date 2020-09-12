@@ -58,66 +58,8 @@ from sklearn.preprocessing import scale
 
 
 ```python
-ski_data = pd.read_csv('../data/ski_data_cleaned.csv')
+ski_data = pd.read_csv('data/ski_data_cleaned.csv')
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    FileNotFoundError                         Traceback (most recent call last)
-
-    <ipython-input-4-e4b0f81bb31f> in <module>()
-    ----> 1 ski_data = pd.read_csv('../data/ski_data_cleaned.csv')
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in read_csv(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, dialect, error_bad_lines, warn_bad_lines, delim_whitespace, low_memory, memory_map, float_precision)
-        684     )
-        685 
-    --> 686     return _read(filepath_or_buffer, kwds)
-        687 
-        688 
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in _read(filepath_or_buffer, kwds)
-        450 
-        451     # Create the parser.
-    --> 452     parser = TextFileReader(fp_or_buf, **kwds)
-        453 
-        454     if chunksize or iterator:
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in __init__(self, f, engine, **kwds)
-        934             self.options["has_index_names"] = kwds["has_index_names"]
-        935 
-    --> 936         self._make_engine(self.engine)
-        937 
-        938     def close(self):
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in _make_engine(self, engine)
-       1166     def _make_engine(self, engine="c"):
-       1167         if engine == "c":
-    -> 1168             self._engine = CParserWrapper(self.f, **self.options)
-       1169         else:
-       1170             if engine == "python":
-    
-
-    ~\Anaconda3\lib\site-packages\pandas\io\parsers.py in __init__(self, src, **kwds)
-       1996         kwds["usecols"] = self.usecols
-       1997 
-    -> 1998         self._reader = parsers.TextReader(src, **kwds)
-       1999         self.unnamed_cols = self._reader.unnamed_cols
-       2000 
-    
-
-    pandas\_libs\parsers.pyx in pandas._libs.parsers.TextReader.__cinit__()
-    
-
-    pandas\_libs\parsers.pyx in pandas._libs.parsers.TextReader._setup_parser_source()
-    
-
-    FileNotFoundError: [Errno 2] No such file or directory: '../data/ski_data_cleaned.csv'
-
 
 
 ```python
@@ -341,18 +283,6 @@ ski_data.head()
 ```python
 state_summary = pd.read_csv('data/state_summary.csv')
 ```
-
-
-    ---------------------------------------------------------------------------
-
-    NameError                                 Traceback (most recent call last)
-
-    <ipython-input-2-74464b6f4568> in <module>()
-    ----> 1 state_summary = pd.read_csv('data/state_summary.csv')
-    
-
-    NameError: name 'pd' is not defined
-
 
 
 ```python
@@ -823,19 +753,100 @@ state_summary_scale.head()
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-1-18ff768bac7c> in <module>()
-          1 #Code task 1#
-          2 #Create a new dataframe, `state_summary_scale` from `state_summary` whilst setting the index to 'state'
-    ----> 3 state_summary_scale = state_summary.set_index('state')
-          4 #Save the state labels (using the index attribute of `state_summary_scale`) into the variable 'state_summary_index'
-          5 state_summary_index = state_summary_scale.index()
-    
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    NameError: name 'state_summary' is not defined
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>resorts_per_state</th>
+      <th>state_total_skiable_area_ac</th>
+      <th>state_total_days_open</th>
+      <th>state_total_terrain_parks</th>
+      <th>state_total_nightskiing_ac</th>
+      <th>resorts_per_100kcapita</th>
+      <th>resorts_per_100ksq_mile</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alaska</th>
+      <td>3</td>
+      <td>2280.0</td>
+      <td>345.0</td>
+      <td>4.0</td>
+      <td>580.0</td>
+      <td>0.410091</td>
+      <td>0.450867</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>2</td>
+      <td>1577.0</td>
+      <td>237.0</td>
+      <td>6.0</td>
+      <td>80.0</td>
+      <td>0.027477</td>
+      <td>1.754540</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>21</td>
+      <td>25948.0</td>
+      <td>2738.0</td>
+      <td>81.0</td>
+      <td>587.0</td>
+      <td>0.053148</td>
+      <td>12.828736</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>22</td>
+      <td>43682.0</td>
+      <td>3258.0</td>
+      <td>74.0</td>
+      <td>428.0</td>
+      <td>0.382028</td>
+      <td>21.134744</td>
+    </tr>
+    <tr>
+      <th>Connecticut</th>
+      <td>5</td>
+      <td>358.0</td>
+      <td>353.0</td>
+      <td>10.0</td>
+      <td>256.0</td>
+      <td>0.140242</td>
+      <td>90.203861</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 The above shows what we expect: the columns we want are all numeric and the state has been moved to the index. Although, it's not necessary to step through the sequence so laboriously, it is often good practice even for experienced professionals. It's easy to make a mistake or forget a step, or the data may have been holding out a surprise! Stepping through like this helps  validate both your work and the data!
@@ -857,6 +868,93 @@ state_summary_scaled_df = pd.DataFrame(state_summary_scale, columns=state_summar
 state_summary_scaled_df.head()
 ```
 
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>resorts_per_state</th>
+      <th>state_total_skiable_area_ac</th>
+      <th>state_total_days_open</th>
+      <th>state_total_terrain_parks</th>
+      <th>state_total_nightskiing_ac</th>
+      <th>resorts_per_100kcapita</th>
+      <th>resorts_per_100ksq_mile</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>-0.806912</td>
+      <td>-0.392012</td>
+      <td>-0.689059</td>
+      <td>-0.816118</td>
+      <td>0.069410</td>
+      <td>0.139593</td>
+      <td>-0.689999</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>-0.933558</td>
+      <td>-0.462424</td>
+      <td>-0.819038</td>
+      <td>-0.726994</td>
+      <td>-0.701326</td>
+      <td>-0.644706</td>
+      <td>-0.658125</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.472706</td>
+      <td>1.978574</td>
+      <td>2.190933</td>
+      <td>2.615141</td>
+      <td>0.080201</td>
+      <td>-0.592085</td>
+      <td>-0.387368</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.599351</td>
+      <td>3.754811</td>
+      <td>2.816757</td>
+      <td>2.303209</td>
+      <td>-0.164893</td>
+      <td>0.082069</td>
+      <td>-0.184291</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>-0.553622</td>
+      <td>-0.584519</td>
+      <td>-0.679431</td>
+      <td>-0.548747</td>
+      <td>-0.430027</td>
+      <td>-0.413557</td>
+      <td>1.504408</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
 ##### 3.5.3.1.1 Verifying the scaling<a id='3.5.3.1.1_Verifying_the_scaling'></a>
 
 This is definitely going the extra mile for validating your steps, but provides a worthwhile lesson.
@@ -870,6 +968,20 @@ First of all, check the mean of the scaled features using panda's `mean()` DataF
 state_summary_scaled_df.mean()
 ```
 
+
+
+
+    resorts_per_state             -6.344132e-17
+    state_total_skiable_area_ac   -5.432163e-17
+    state_total_days_open          9.754102e-17
+    state_total_terrain_parks      4.282289e-17
+    state_total_nightskiing_ac     6.344132e-17
+    resorts_per_100kcapita         5.075305e-17
+    resorts_per_100ksq_mile        5.075305e-17
+    dtype: float64
+
+
+
 This is pretty much zero!
 
 Perform a similar check for the standard deviation using pandas's `std()` DataFrame method.
@@ -881,6 +993,20 @@ Perform a similar check for the standard deviation using pandas's `std()` DataFr
 state_summary_scaled_df.std()
 ```
 
+
+
+
+    resorts_per_state              1.014599
+    state_total_skiable_area_ac    1.014599
+    state_total_days_open          1.014599
+    state_total_terrain_parks      1.014599
+    state_total_nightskiing_ac     1.014599
+    resorts_per_100kcapita         1.014599
+    resorts_per_100ksq_mile        1.014599
+    dtype: float64
+
+
+
 Well, this is a little embarrassing. The numbers should be closer to 1 than this! Check the documentation for [scale](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.scale.html) to see if you used it right. What about [std](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.std.html), did you mess up there? Is one of them not working right?
 
 The keen observer, who already has some familiarity with statistical inference and biased estimators, may have noticed what's happened here. `scale()` uses the biased estimator for standard deviation (ddof=0). This doesn't mean it's bad! It simply means it calculates the standard deviation of the sample it was given. The `std()` method, on the other hand, defaults to using ddof=1, that is it's normalized by N-1. In other words, the `std()` method default is to assume you want your best estimate of the population parameter based on the given sample. You can tell it to return the biased estimate instead:
@@ -891,6 +1017,20 @@ The keen observer, who already has some familiarity with statistical inference a
 #Repeat the previous call to `std()` but pass in ddof=0 
 state_summary_scaled_df.std(ddof=0)
 ```
+
+
+
+
+    resorts_per_state              1.0
+    state_total_skiable_area_ac    1.0
+    state_total_days_open          1.0
+    state_total_terrain_parks      1.0
+    state_total_nightskiing_ac     1.0
+    resorts_per_100kcapita         1.0
+    resorts_per_100ksq_mile        1.0
+    dtype: float64
+
+
 
 There! Now it agrees with `scale()` and our expectation. This just goes to show different routines to do ostensibly the same thing can have different behaviours. Good practice is to keep validating your work and checking the documentation!
 
@@ -919,6 +1059,10 @@ plt.xlabel('Component #')
 plt.ylabel('Cumulative ratio variance')
 plt.title('Cumulative variance ratio explained by PCA components for state/resort summary statistics');
 ```
+
+
+![png](output_73_0.png)
+
 
 The first two components seem to account for over 75% of the variance, and the first four for over 95%.
 
@@ -978,9 +1122,22 @@ Here, all point markers for the states are the same size and colour. You've visu
 ```python
 #Code task 8#
 #Calculate the average 'AdultWeekend' ticket price by state
-state_avg_price = ski_data.groupby(state)['AdultWeekend'].mean()
+state_avg_price = ski_data.groupby('state')['AdultWeekend'].mean()
 state_avg_price.head()
 ```
+
+
+
+
+    state
+    Alaska         57.333333
+    Arizona        83.500000
+    California     81.416667
+    Colorado       90.714286
+    Connecticut    56.800000
+    Name: AdultWeekend, dtype: float64
+
+
 
 
 ```python
@@ -1008,6 +1165,68 @@ At this point you have several objects floating around. You have just calculated
 pca_df = pd.DataFrame({'PC1': state_pca_x[:, 0], 'PC2': state_pca_x[:, 1]}, index=state_summary_index)
 pca_df.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+    </tr>
+    <tr>
+      <th>state</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alaska</th>
+      <td>-1.336533</td>
+      <td>-0.182208</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>-1.839049</td>
+      <td>-0.387959</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>3.537857</td>
+      <td>-1.282509</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4.402210</td>
+      <td>-0.898855</td>
+    </tr>
+    <tr>
+      <th>Connecticut</th>
+      <td>-0.988027</td>
+      <td>1.020218</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 That worked, and you have state as an index.
 
@@ -1098,9 +1317,72 @@ Now you can concatenate both parts on axis 1 and using the indexes.
 #Code task 10#
 #Use pd.concat to concatenate `pca_df` and `state_avg_price` along axis 1
 # remember, pd.concat will align on index
-pca_df = concat([pca_df, state_avg_price], axis=1)
+pca_df = pd.concat([pca_df, state_avg_price], axis= 1)
 pca_df.head()
 ```
+
+
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>PC1</th>
+      <th>PC2</th>
+      <th>AdultWeekend</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Alaska</th>
+      <td>-1.336533</td>
+      <td>-0.182208</td>
+      <td>57.333333</td>
+    </tr>
+    <tr>
+      <th>Arizona</th>
+      <td>-1.839049</td>
+      <td>-0.387959</td>
+      <td>83.500000</td>
+    </tr>
+    <tr>
+      <th>California</th>
+      <td>3.537857</td>
+      <td>-1.282509</td>
+      <td>81.416667</td>
+    </tr>
+    <tr>
+      <th>Colorado</th>
+      <td>4.402210</td>
+      <td>-0.898855</td>
+      <td>90.714286</td>
+    </tr>
+    <tr>
+      <th>Connecticut</th>
+      <td>-0.988027</td>
+      <td>1.020218</td>
+      <td>56.800000</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
 
 You saw some range in average ticket price histogram above, but it may be hard to pick out differences if you're thinking of using the value for point size. You'll add another column where you seperate these prices into quartiles; that might show something.
 
@@ -1320,12 +1602,16 @@ plt.subplots(figsize=(12, 10))
 # Note the argument below to make sure we get the colours in the ascending
 # order we intuitively expect!
 sns.scatterplot(x='PC1', y='PC2', size='AdultWeekend', hue='Quartile', 
-                hue_order=pca_df.Quartile.cat.categories, data=pca_df)
+                hue_order= pca_df.Quartile.cat.categories, data=pca_df)
 #and we can still annotate with the state labels
 for s, x, y in zip(state, x, y):
     plt.annotate(s, (x, y))   
 plt.title(f'Ski states summary PCA, {pc_var:.1f}% variance explained');
 ```
+
+
+![png](output_107_0.png)
+
 
 Seaborn does more! You should always care about your output. What if you want the ordering of the colours in the legend to align intuitively with the ordering of the quartiles? Add a `hue_order` argument! Seaborn has thrown in a few nice other things:
 
@@ -2290,6 +2576,10 @@ plt.subplots(figsize=(12,10))
 sns.heatmap(ski_data.corr());
 ```
 
+
+![png](output_130_0.png)
+
+
 There is a lot to take away from this. First, summit and base elevation are quite highly correlated. This isn't a surprise. You can also see that you've introduced a lot of multicollinearity with your new ratio features; they are negatively correlated with the number of resorts in each state. This latter observation makes sense! If you increase the number of resorts in a state, the share of all the other state features will drop for each. An interesting observation in this region of the heatmap is that there is some positive correlation between the ratio of night skiing area with the number of resorts per capita. In other words, it seems that when resorts are more densely located with population, more night skiing is provided.
 
 Turning your attention to your target feature, `AdultWeekend` ticket price, you see quite a few reasonable correlations. `fastQuads` stands out, along with `Runs` and `Snow Making_ac`. The last one is interesting. Visitors would seem to value more guaranteed snow, which would cost in terms of snow making equipment, which would drive prices and costs up. Of the new features, `resort_night_skiing_state_ratio` seems the most correlated with ticket price. If this is true, then perhaps seizing a greater share of night skiing capacity is positive for the price a resort can charge.
@@ -2367,7 +2657,22 @@ It also appears that having no fast quads may limit the ticket price, but if you
 
 **Q: 1** Write a summary of the exploratory data analysis above. What numerical or categorical features were in the data? Was there any pattern suggested of a relationship between state and ticket price? What did this lead us to decide regarding which features to use in subsequent modeling? What aspects of the data (e.g. relationships between features) should you remain wary of when you come to perform feature selection for modeling? Two key points that must be addressed are the choice of target feature for your modelling and how, if at all, you're going to handle the states labels in the data.
 
-**A: 1** Your answer here
+**A:**
+1. The list of data types in the cleaned dataframe shows 3 objects, 11 integers, and 11 floats.
+2. The list of data types in the state summary shows 1 object, 3 integers, and 4 floats.
+3. Montana is in the top five in total skiable area and resort density based on population. Montana is not one of the top five in the other lists: in the amount of resorts per state, total area, population, total days open, resort density by area, and night skiing area.
+4. In the PCA analysis, the first two factors, total skiable area and resorts per state, account for 75% of the variance and the first four factors account for 95% of the variance.
+5. There was no correlation between average ticket prices and states.
+6. The heat map showed the following:
+	a. A high correlation between summit and base elevation.
+	b. If the number of resorts in a state is increased, the share of all the other state features will drop for each.
+	c. Some positive correlation between the ratio of night skiing area with the number of resorts per capita. Wen resorts are more densely located with population, more night skiing is provided.
+	d. Visitors would seem to value more guaranteed snow, which would cost in terms of snow making equipment, which would drive prices and costs up.
+	e. Resort_night_skiing_state_ratio seems the most correlated with ticket price. If this is true, then perhaps seizing a greater share of night skiing capacity is positive for the price a resort can charge.
+	f. Total_chairs is quite well correlated with ticket price. This is plausible; the more runs you have, the more chairs you'd need to ferry people to them!
+	g. The total skiable terrain area is not as useful as the area with snow making. People seem to put more value in guaranteed snow cover rather than more variable terrain area.
+	h. The vertical drop seems to be a selling point that raises ticket prices as well.
+7. The scatterplot shows a strong positive correlation with vertical_drop. resorts_per_100kcapita shows that when the value is low, there is quite a variability in ticket price, although it's capable of going quite high. Ticket price may drop a little before then climbing upwards as the number of resorts per capita increases. Ticket price could climb with the number of resorts serving a population because it indicates a popular area for skiing with plenty of demand. The lower ticket price when fewer resorts serve a population may similarly be because it's a less popular state for skiing. The high price for some resorts when resorts are rare (relative to the population size) may indicate areas where a small number of resorts can benefit from a monopoly effect.
 
 
 ```python
@@ -2699,7 +3004,7 @@ ski_data.head().T
 
 
 ```python
-datapath = '../data'
+datapath = 'data'
 datapath_skidata = os.path.join(datapath, 'ski_data_step3_features.csv')
 if not os.path.exists(datapath_skidata):
     ski_data.to_csv(datapath_skidata, index=False)
