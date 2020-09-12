@@ -68,7 +68,8 @@ Placing your imports all together at the start of your notebook means you only n
 #Code task 1#
 #Import pandas, matplotlib.pyplot, and seaborn in the correct lines below
 import pandas as pd
-import matplotlib as plt
+import matplotlib.pyplot as plt
+import matplotlib as mpl
 import seaborn as sns
 import os
 ```
@@ -1400,19 +1401,7 @@ plt.subplots_adjust(wspace=0.5);
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-81-e338717e4c89> in <module>()
-          1 #Code task 13#
-          2 #Create two subplots on 1 row and 2 columns with a figsize of (12, 8)
-    ----> 3 fig, ax = plt.subplots(nrows=1, ncols=2, figsize=(12, 8))
-          4 #Specify a horizontal barplot ('barh') as kind of plot (kind=)
-          5 ski_data.Region.value_counts().plot(kind='barh', ax=ax[0])
-    
-
-    AttributeError: module 'matplotlib' has no attribute 'subplots'
+![png](output_59_0.png)
 
 
 How's your geography? Looking at the distribution of States, you see New York accounting for the majority of resorts. Our target resort is in Montana, which comes in at 13th place. You should think carefully about how, or whether, you use this information. Does New York command a premium because of its proximity to population? Even if a resort's State were a useful predictor of ticket price, your main interest lies in Montana. Would you want a model that is skewed for accuracy by New York? Should you just filter for Montana and create a Montana-specific model? This would slash your available data volume. Your problem task includes the contextual insight that the data are for resorts all belonging to the same market share. This suggests one might expect prices to be similar amongst them. You can look into this. A boxplot grouped by State is an ideal way to quickly compare prices. Another side note worth bringing up here is that, in reality, the best approach here definitely would include consulting with the client or other domain expert. They might know of good reasons for treating states equivalently or differently. The data scientist is rarely the final arbiter of such a decision. But here, you'll see if we can find any supporting evidence for treating states the same or differently.
@@ -1621,19 +1610,7 @@ plt.xlabel('State');
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-84-6ec7fe0a8229> in <module>()
-          3 #with 'state' on the x-axis, 'Price' as the y-value, and a hue that indicates 'Ticket'
-          4 #This will use boxplot's x, y, hue, and data arguments.
-    ----> 5 plt.subplots(figsize=(12, 8))
-          6 sns.boxplot(x='state', y='Price', hue='Ticket', data=ticket_prices)
-          7 plt.xticks(rotation='vertical')
-    
-
-    AttributeError: module 'matplotlib' has no attribute 'subplots'
+![png](output_72_0.png)
 
 
 Aside from some relatively expensive ticket prices in California, Colorado, and Utah, most prices appear to lie in a broad band from around 25 to over 100 dollars. Some States show more variability than others. Montana and South Dakota, for example, both show fairly small variability as well as matching weekend and weekday ticket prices. Nevada and Utah, on the other hand, show the most range in prices. Some States, notably North Carolina and Virginia, have weekend prices far higher than weekday prices. You could be inspired from this exploration to consider a few potential groupings of resorts, those with low spread, those with lower averages, and those that charge a premium for weekend tickets. However, you're told that you are taking all resorts to be part of the same market share, you  could argue against further segment the resorts. Nevertheless, ways to consider using the State information in your modelling include:
@@ -2006,22 +1983,7 @@ plt.subplots_adjust(hspace=0.5);
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-86-00b11c401c20> in <module>()
-          5 #It's important you create legible and easy-to-read plots
-          6 ski_data.hist(figsize=(15,10))
-    ----> 7 plt.subplots_adjust(hspace=0.5);
-          8 #Hint: notice how the terminating ';' "swallows" some messy output and leads to a tidier notebook
-    
-
-    AttributeError: module 'matplotlib' has no attribute 'subplots_adjust'
-
-
-
-![png](output_84_1.png)
+![png](output_84_0.png)
 
 
 What features do we have possible cause for concern about and why?
@@ -2501,23 +2463,7 @@ plt.title('Distribution of years open excluding 2019');
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-94-d513fb479491> in <module>()
-          3 #Pass the argument bins=30 to hist(), but feel free to explore other values
-          4 ski_data.yearsOpen[ski_data.yearsOpen < 1000].hist(bins=30)
-    ----> 5 plt.xlabel('Years open')
-          6 plt.ylabel('Count')
-          7 plt.title('Distribution of years open excluding 2019');
-    
-
-    AttributeError: module 'matplotlib' has no attribute 'xlabel'
-
-
-
-![png](output_118_1.png)
+![png](output_118_0.png)
 
 
 The above distribution of years seems entirely plausible, including the 104 year value. You can certainly state that no resort will have been open for 2019 years! It likely means the resort opened in 2019. It could also mean the resort is due to open in 2019. You don't know when these data were gathered!
@@ -2591,19 +2537,84 @@ state_summary.head()
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    AttributeError                            Traceback (most recent call last)
 
-    <ipython-input-95-efc8e2f6b5db> in <module>()
-          6 #what it does)
-          7 state_summary = ski_data.groupby('state').agg(
-    ----> 8     resorts_per_state=pd.NamedAgg(column='Name', aggfunc='size'), #could pick any column here
-          9     state_total_skiable_area_ac=pd.NamedAgg(column='SkiableTerrain_ac', aggfunc='sum'),
-         10     state_total_days_open=pd.NamedAgg(column='daysOpenLastYear', aggfunc='sum'),
-    
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    AttributeError: module 'pandas' has no attribute 'NamedAgg'
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state</th>
+      <th>resorts_per_state</th>
+      <th>state_total_skiable_area_ac</th>
+      <th>state_total_days_open</th>
+      <th>state_total_terrain_parks</th>
+      <th>state_total_nightskiing_ac</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaska</td>
+      <td>3</td>
+      <td>2280.0</td>
+      <td>345.0</td>
+      <td>4.0</td>
+      <td>580.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Arizona</td>
+      <td>2</td>
+      <td>1577.0</td>
+      <td>237.0</td>
+      <td>6.0</td>
+      <td>80.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>California</td>
+      <td>21</td>
+      <td>25948.0</td>
+      <td>2738.0</td>
+      <td>81.0</td>
+      <td>587.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Colorado</td>
+      <td>22</td>
+      <td>68682.0</td>
+      <td>3258.0</td>
+      <td>74.0</td>
+      <td>428.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Connecticut</td>
+      <td>5</td>
+      <td>358.0</td>
+      <td>353.0</td>
+      <td>10.0</td>
+      <td>256.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 ## 2.8 Drop Rows With No Price Data<a id='2.8_Drop_Rows_With_No_Price_Data'></a>
@@ -2836,20 +2847,6 @@ established = usa_states.iloc[:, 4]
 ```
 
 
-    ---------------------------------------------------------------------------
-
-    AttributeError                            Traceback (most recent call last)
-
-    <ipython-input-98-e811d4726ed1> in <module>()
-          2 #Use the iloc accessor to get the pandas Series for column number 4 from `usa_states`
-          3 #It should be a column of dates
-    ----> 4 established = usa_states.iloc[:, 4]
-    
-
-    AttributeError: 'list' object has no attribute 'iloc'
-
-
-
 ```python
 established
 ```
@@ -2925,19 +2922,66 @@ usa_states_sub.head()
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    AttributeError                            Traceback (most recent call last)
 
-    <ipython-input-99-ec96a84d3b66> in <module>()
-          3 #Set the names of these extracted columns to 'state', 'state_population', and 'state_area_sq_miles',
-          4 #respectively.
-    ----> 5 usa_states_sub = usa_states.iloc[:, [0,5,6]].copy()
-          6 usa_states_sub.columns = ['state', 'state_population', 'state_area_sq_miles']
-          7 usa_states_sub.head()
-    
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    AttributeError: 'list' object has no attribute 'iloc'
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state</th>
+      <th>state_population</th>
+      <th>state_area_sq_miles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alabama</td>
+      <td>4903185</td>
+      <td>52420</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Alaska</td>
+      <td>731545</td>
+      <td>665384</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Arizona</td>
+      <td>7278717</td>
+      <td>113990</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Arkansas</td>
+      <td>3017804</td>
+      <td>53179</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>California</td>
+      <td>39512223</td>
+      <td>163695</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 Do you have all the ski data states accounted for?
@@ -2952,18 +2996,10 @@ missing_states
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-100-140ba242b69e> in <module>()
-          2 #Find the states in `state_summary` that are not in `usa_states_sub`
-          3 #Hint: set(list1) - set(list2) is an easy way to get items in list1 that are not in list2
-    ----> 4 missing_states = set(state_summary.state) - set(usa_states_sub.state)
-          5 missing_states
-    
+    {'Massachusetts', 'Pennsylvania', 'Rhode Island', 'Virginia'}
 
-    NameError: name 'state_summary' is not defined
 
 
 No?? 
@@ -3003,18 +3039,15 @@ usa_states_sub.state[usa_states_sub.state.str.contains('Massachusetts|Pennsylvan
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-101-01d55873281d> in <module>()
-          6 #regex=True #we used a regex in our `to_replace` argument
-          7 #inplace=True #Do this "in place"
-    ----> 8 usa_states_sub.state.replace(to_replace='\[.*\]', value='', regex=True, inplace=True)
-          9 usa_states_sub.state[usa_states_sub.state.str.contains('Massachusetts|Pennsylvania|Rhode Island|Virginia')]
-    
+    20    Massachusetts
+    37     Pennsylvania
+    38     Rhode Island
+    45         Virginia
+    47    West Virginia
+    Name: state, dtype: object
 
-    NameError: name 'usa_states_sub' is not defined
 
 
 
@@ -3027,18 +3060,10 @@ missing_states
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-102-e2fb8d754222> in <module>()
-          2 #And now verify none of our states are missing by checking that there are no states in
-          3 #state_summary that are not in usa_states_sub (as earlier using `set()`)
-    ----> 4 missing_states = set(state_summary.state) - set(usa_states_sub.state)
-          5 missing_states
-    
+    set()
 
-    NameError: name 'state_summary' is not defined
 
 
 Better! You have an empty set for missing states now. You can confidently add the population and state area columns to the ski resort data.
@@ -3053,18 +3078,96 @@ state_summary.head()
 ```
 
 
-    ---------------------------------------------------------------------------
 
-    NameError                                 Traceback (most recent call last)
 
-    <ipython-input-103-8977c92fb3fd> in <module>()
-          2 #Use 'state_summary's `merge()` method to combine our new data in 'usa_states_sub'
-          3 #specify the arguments how='left' and on='state'
-    ----> 4 state_summary = state_summary.merge(usa_states_sub, how='left', on='state')
-          5 state_summary.head()
-    
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-    NameError: name 'state_summary' is not defined
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>state</th>
+      <th>resorts_per_state</th>
+      <th>state_total_skiable_area_ac</th>
+      <th>state_total_days_open</th>
+      <th>state_total_terrain_parks</th>
+      <th>state_total_nightskiing_ac</th>
+      <th>state_population</th>
+      <th>state_area_sq_miles</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Alaska</td>
+      <td>3</td>
+      <td>2280.0</td>
+      <td>345.0</td>
+      <td>4.0</td>
+      <td>580.0</td>
+      <td>731545</td>
+      <td>665384</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Arizona</td>
+      <td>2</td>
+      <td>1577.0</td>
+      <td>237.0</td>
+      <td>6.0</td>
+      <td>80.0</td>
+      <td>7278717</td>
+      <td>113990</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>California</td>
+      <td>21</td>
+      <td>25948.0</td>
+      <td>2738.0</td>
+      <td>81.0</td>
+      <td>587.0</td>
+      <td>39512223</td>
+      <td>163695</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Colorado</td>
+      <td>22</td>
+      <td>68682.0</td>
+      <td>3258.0</td>
+      <td>74.0</td>
+      <td>428.0</td>
+      <td>5758736</td>
+      <td>104094</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Connecticut</td>
+      <td>5</td>
+      <td>358.0</td>
+      <td>353.0</td>
+      <td>10.0</td>
+      <td>256.0</td>
+      <td>3565278</td>
+      <td>5543</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
 
 
 Having created this data frame of summary statistics for various states, it would seem obvious to join this with the ski resort data to augment it with this additional data. You will do this, but not now. In the next notebook you will be exploring the data, including the relationships between the states. For that you want a separate row for each state, as you have here, and joining the data this soon means you'd need to separate and eliminate redundances in the state data when you wanted it.
