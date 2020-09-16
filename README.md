@@ -10,8 +10,4 @@ My work for the Springboard Data Science Career Track
 <li>04.02.01_Pandas_Foundations</li>
 <li>04.02.02_Manipulating_data_frames_with_pandas</li>
 <li>04.02.03_Merging_DataFrames_with_pandas</li>
-<li>04.03.Unit_4_Challenge</li>
-<li>06.02_Data_Wrangling</li>
-<li>06.03_Exploratory_Data_Analysis</li>
-<li>06.04_Preprocessing_and_Training</li>
-<li>06.05_Modeling</li></ol>
+<li>04.03.Unit_4_Challenge</li></ol>
