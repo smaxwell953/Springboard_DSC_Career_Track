@@ -13,4 +13,5 @@ My work for the Springboard Data Science Career Track
 <li>04.03.Unit_4_Challenge</li>
 <li>07.02.01.Introduction_to_Importing_Data_(1)</li>
 <li>07.02.01.Introduction_to_Importing_Data_(2)</li>
-<li>07.05.01.Data_Cleaning_in_Python</li></ol>
+<li>07.05.01.Data_Cleaning_in_Python</li>
+<li>7.5.2_Python_Data_Science_Toolbox_(Part_2)</li></ol>
