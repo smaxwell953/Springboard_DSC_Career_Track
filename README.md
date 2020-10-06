@@ -16,7 +16,7 @@ My work for the Springboard Data Science Career Track
 <li>07.05.01 API Mini-Project</li>
 <li>07.05.01_Data_Cleaning_in_Python</li>
 <li>07.05.02_Python_Data_Science_Toolbox_(Part_2)</li>
-<li></li>
+<li>08.03_SQL_Case_Study:_Country_Clubs</li>
 <li></li>
 <li></li>
 <li></li></ol>
