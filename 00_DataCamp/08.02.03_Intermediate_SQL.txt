@@ -348,19 +348,23 @@ WHERE
 
 ---Add a subquery in SELECT---
 SELECT 
-	-- Select country ID, date, home, and away goals from match
-	main.country_id,
-    main.date,
-    main.home_goal, 
-    main.away_goal
-FROM match AS main
+	-- Select the stage and average goals from s
+	s.stage,
+	ROUND(s.avg_goals,2) AS avg_goal,
+    -- Select the overall average for 2012/2013
+	(SELECT AVG(home_goal + away_goal) FROM match WHERE season = '2012/2013') AS overall_avg
+FROM 
+	-- Select the stage and average goals in 2012/2013 from match
+	(SELECT
+         stage,
+         AVG(home_goal + away_goal) AS avg_goals
+     FROM match
+     WHERE season = '2012/2013'
+     GROUP BY stage) AS s
 WHERE 
-	-- Filter the main query by the subquery
-	(home_goal + away_goal) > 
-        (SELECT AVG((sub.home_goal + sub.away_goal) * 3)
-         FROM match AS sub
-         -- Join the main query to the subquery in WHERE
-         WHERE main.country_id = sub.country_id);
+	-- Filter the main query using the subquery
+	s.avg_goals > (SELECT AVG(home_goal + away_goal) 
+                   FROM match WHERE season = '2012/2013');
 
 ---CORRELATED QUERIES, NESTED QUERIES, AND COMMON TABLE EXPRESSIONS---
 ---Basic Correlated Subqueries---
