@@ -21,5 +21,6 @@ My work for the Springboard Data Science Career Track
 <li>11.02_Data_Visualization</li>
 <li>14.02_Logistic_Regression_Advanced_Case_Study</li>
 <li>14.03_Decision_Tree_Specialty_Coffee_Case_Study</li>
-<li>14.04_RandomForest_Covid_Case_Study</li></ol>
-<li>14.05_Gradient_Boosting_Case_Study</li></ol>
+<li>14.04_RandomForest_Covid_Case_Study</li>
+<li>14.05_Gradient_Boosting_Case_Study</li>
+<li>15.02_Euclidean_and_Manhattan_Distances_Case_Study</li></ol>
