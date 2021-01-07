@@ -27,4 +27,5 @@ My work for the Springboard Data Science Career Track
 <li>15.03_Unsuperivsed_in_depth</li>
 <li>15.05_Cosine_Similarity_Case_Study</li>
 <li>15.06_Clustering_Case_Study</li>
-<li>16.02_featuretools</li></ol>
+<li>16.02_featuretools</li>
+<li></li></ol>
