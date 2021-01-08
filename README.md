@@ -28,4 +28,4 @@ My work for the Springboard Data Science Career Track
 <li>15.05_Cosine_Similarity_Case_Study</li>
 <li>15.06_Clustering_Case_Study</li>
 <li>16.02_featuretools</li>
-<li></li></ol>
+<li>18.02_Grid_Search_in_KNN</li></ol>
