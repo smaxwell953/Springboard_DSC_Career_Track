@@ -29,4 +29,5 @@ My work for the Springboard Data Science Career Track:
 <li>15.06_Clustering_Case_Study</li>
 <li>16.02_featuretools</li>
 <li>18.02.04_Grid_Search_in_KNN</li>
-<li>18.02.06_Bayesian_Optimization_Case_Study</li></ol>
+<li>18.02.06_Bayesian_Optimization_Case_Study</li>
+<li></li></ol>
