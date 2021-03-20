@@ -30,4 +30,6 @@ My work for the Springboard Data Science Career Track:
 <li>16.02_featuretools</li>
 <li>18.02.04_Grid_Search_in_KNN</li>
 <li>18.02.06_Bayesian_Optimization_Case_Study</li>
-<li>20.3_Data_Storytelling</li></ol>
+<li>20.3_Data_Storytelling</li>
+  <li>21.01_Cowboy_Cigarettes</li>
+  <li>24.05_Capstone_3</li></ol>
