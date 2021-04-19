@@ -2,14 +2,10 @@
 
 My work for the Springboard Data Science Career Track:
 
-<ol><li>01.04.02 - Career Strategy Plan</li>
+<ol>
 <li>03.02_Monalco_Sensing_Problem_Statement</li>
 <li>03.03_Nordic_Sensing_Problem_Statement</li>
-<li>04.01.01_Data_Types</li>
-<li>04.01.02_Functions</li>
 <li>04.02.01_Pandas_Foundations</li>
-<li>04.02.02_Manipulating_data_frames_with_pandas</li>
-<li>04.02.03_Merging_DataFrames_with_pandas</li>
 <li>04.03_Unit_4_Challenge</li>
 <li>07.05.01 API Mini-Project</li>
 <li>08.03_SQL_Case_Study:_Country_Clubs</li>
