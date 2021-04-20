@@ -5,7 +5,6 @@ My work for the Springboard Data Science Career Track:
 <ol>
 <li>03.02_Monalco_Sensing_Problem_Statement</li>
 <li>03.03_Nordic_Sensing_Problem_Statement</li>
-<li>04.02.01_Pandas_Foundations</li>
 <li>04.03_Unit_4_Challenge</li>
 <li>07.05.01 API Mini-Project</li>
 <li>08.03_SQL_Case_Study:_Country_Clubs</li>
